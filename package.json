@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/cmeese549/mudtruck#readme",
   "dependencies": {
+    "cron": "^1.7.2",
     "dotenv": "^8.1.0",
     "puppeteer": "^1.19.0",
     "twitter": "^1.7.1"

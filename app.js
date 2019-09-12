@@ -1,21 +1,6 @@
 'use strict';
-
 require('dotenv').config();
-
-// const Twitter = require('twitter');
-// const bot = new Twitter({
-//     consumer_key: process.env.CONSUMER_KEY,
-//     consumer_secret: process.env.CONSUMER_SECRET,
-//     access_token_key: process.env.ACCESS_TOKEN_KEY,
-//     access_token_secret: process.env.ACCESS_TOKEN_SECRET
-// });
-
-// bot.post('statuses/update', {status: 'mudtruck'},  function(error, tweet, response) {
-//     if(error) console.log(error.body);
-//     console.log(tweet);  // Tweet body.
-//     console.log(response.body);  // Raw response object.
-// });
-
+const CronJob = require('cron').CronJob;
 const pup = require('puppeteer');
 const email = process.env.EMAIL;
 const pw = process.env.PW;
@@ -47,4 +32,8 @@ async function doit(){
     }
 }
 
-doit();
+const cjob = new CronJob('1 20 16 * * *', function() {
+    doit();
+}, null, true, 'America/Denver');
+cjob.start();
+
